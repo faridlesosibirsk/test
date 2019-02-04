@@ -86,8 +86,6 @@
 				<Form>Form1</Form>
 				<FormType>fmx</FormType>
 			</DCCReference>
-			<DCCReference Include="ControllersUnit.pas"/>
-			<DCCReference Include="TestControllerUnit.pas"/>
 			<DCCReference Include="TestInterfaceUnit.pas"/>
 			<DCCReference Include="TestClassUnit.pas"/>
 			<DCCReference Include="OpenTestsUnit.pas"/>
@@ -96,15 +94,14 @@
 			<DCCReference Include="SelectAnswerUnit.pas"/>
 			<DCCReference Include="NextQuestionUnit.pas"/>
 			<DCCReference Include="ResultTestUnit.pas"/>
+			<DCCReference Include="ConnectionUnit.pas"/>
+			<DCCReference Include="AccessConnectionUnit.pas"/>
+			<DCCReference Include="BuilserUnit.pas"/>
 			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Project1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txaPackage"/>
-			<None Include="ModelSupport_Project1\ControllersUnit\default.txaPackage"/>
-			<None Include="ModelSupport_Project1\ControllersUnit\default.txvpck"/>
-			<None Include="ModelSupport_Project1\TestControllerUnit\default.txaPackage"/>
-			<None Include="ModelSupport_Project1\TestControllerUnit\default.txvpck"/>
 			<None Include="ModelSupport_Project1\TestInterfaceUnit\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\TestInterfaceUnit\default.txvpck"/>
 			<None Include="ModelSupport_Project1\TestClassUnit\default.txaPackage"/>
@@ -121,6 +118,12 @@
 			<None Include="ModelSupport_Project1\NextQuestionUnit\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\NextQuestionUnit\default.txvpck"/>
 			<None Include="ModelSupport_Project1\ResultTestUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\ConnectionUnit\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\ConnectionUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\AccessConnectionUnit\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\AccessConnectionUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\BuilserUnit\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\BuilserUnit\default.txvpck"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

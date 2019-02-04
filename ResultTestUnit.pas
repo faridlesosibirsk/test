@@ -3,10 +3,14 @@ unit ResultTestUnit;
 interface
 
 uses
+  BuilserUnit, ConnectionUnit,
   FMX.Forms;
 
 type
-  ResultTestClass = class
+  ResultTestClass = class(TInterfacedObject, Builser)
+  private
+    /// <link>aggregation</link>
+    Connection1: Connection;
   public
     constructor create(AOwner: TForm);
   end;

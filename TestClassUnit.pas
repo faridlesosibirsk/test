@@ -3,6 +3,7 @@ unit TestClassUnit;
 interface
 
 uses
+  BuilserUnit,
   FMX.Forms,
   OpenTestsUnit,
   SelectTestUnit,
@@ -18,17 +19,7 @@ type
   TestClass = class(TInterfacedObject, TestInterface)
   private
     /// <link>aggregation</link>
-    OpenTestsClass1: OpenTestsClass;
-    /// <link>aggregation</link>
-    SelectTestClass1: SelectTestClass;
-    /// <link>aggregation</link>
-    StartTestClass1: StartTestClass;
-    /// <link>aggregation</link>
-    SelectAnswerClass1: SelectAnswerClass;
-    /// <link>aggregation</link>
-    NextQuestionClass1: NextQuestionClass;
-    /// <link>aggregation</link>
-    ResultTestClass1: ResultTestClass;
+    Builser1: Builser;
     AOwner: TForm;
     procedure OpenTests_(Sender: TObject);
     procedure SelectTest_(Sender: TObject);
@@ -53,6 +44,7 @@ implementation
 constructor TestClass.create(AOwner: TForm);
 begin
   self.AOwner:=AOwner;
+  OpenTests_(nil);
 end;
 
 function TestClass.NextQuestion: TList<TNotifyEvent>;
@@ -63,7 +55,7 @@ end;
 
 procedure TestClass.NextQuestion_(Sender: TObject);
 begin
-  NextQuestionClass1:= NextQuestionClass.Create(AOwner);
+  Builser1:= NextQuestionClass.Create(AOwner);
 end;
 
 function TestClass.OpenTests: TList<TNotifyEvent>;
@@ -74,7 +66,7 @@ end;
 
 procedure TestClass.OpenTests_(Sender: TObject);
 begin
-  OpenTestsClass1:= OpenTestsClass.create(AOwner);
+  Builser1:= OpenTestsClass.create(AOwner);
 end;
 
 function TestClass.ResultTest: TList<TNotifyEvent>;
@@ -85,7 +77,7 @@ end;
 
 procedure TestClass.ResultTest_(Sender: TObject);
 begin
-  ResultTestClass1:= ResultTestClass.create(AOwner);
+  Builser1:= ResultTestClass.create(AOwner);
 end;
 
 function TestClass.SelectAnswer: TList<TNotifyEvent>;
@@ -96,7 +88,7 @@ end;
 
 procedure TestClass.SelectAnswer_(Sender: TObject);
 begin
-  SelectAnswerClass1:= SelectAnswerClass.create(AOwner);
+  Builser1:= SelectAnswerClass.create(AOwner);
 end;
 
 function TestClass.SelectTest: TList<TNotifyEvent>;
@@ -107,7 +99,7 @@ end;
 
 procedure TestClass.SelectTest_(Sender: TObject);
 begin
-  StartTestClass1:= StartTestClass.create(AOwner);
+  Builser1:= StartTestClass.create(AOwner);
 end;
 
 function TestClass.StartTest: TList<TNotifyEvent>;
@@ -118,7 +110,7 @@ end;
 
 procedure TestClass.StartTest_(Sender: TObject);
 begin
-  StartTestClass1:= StartTestClass.create(AOwner);
+  Builser1:= StartTestClass.create(AOwner);
 end;
 
 end.

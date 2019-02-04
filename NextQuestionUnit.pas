@@ -3,10 +3,14 @@ unit NextQuestionUnit;
 interface
 
 uses
+  BuilserUnit, ConnectionUnit,
   FMX.Forms;
 
 type
-  NextQuestionClass = class
+  NextQuestionClass = class(TInterfacedObject, Builser)
+  private
+    /// <link>aggregation</link>
+    Connection1: Connection;
   public
     constructor create(AOwner: TForm);
   end;

@@ -3,8 +3,6 @@ program Project1;
 uses
   FMX.Forms,
   Unit1 in 'Unit1.pas' {Form1},
-  ControllersUnit in 'ControllersUnit.pas',
-  TestControllerUnit in 'TestControllerUnit.pas',
   TestInterfaceUnit in 'TestInterfaceUnit.pas',
   TestClassUnit in 'TestClassUnit.pas',
   OpenTestsUnit in 'OpenTestsUnit.pas',
@@ -12,7 +10,10 @@ uses
   StartTestUnit in 'StartTestUnit.pas',
   SelectAnswerUnit in 'SelectAnswerUnit.pas',
   NextQuestionUnit in 'NextQuestionUnit.pas',
-  ResultTestUnit in 'ResultTestUnit.pas';
+  ResultTestUnit in 'ResultTestUnit.pas',
+  ConnectionUnit in 'ConnectionUnit.pas',
+  AccessConnectionUnit in 'AccessConnectionUnit.pas',
+  BuilserUnit in 'BuilserUnit.pas';
 
 {$R *.res}
 

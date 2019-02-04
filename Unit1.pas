@@ -3,8 +3,8 @@ unit Unit1;
 interface
 
 uses
-  ControllersUnit,
-  TestControllerUnit,
+  TestInterfaceUnit,
+  TestClassUnit,
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs;
 
@@ -13,7 +13,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
     /// <link>aggregation</link>
-    Controller1: Controllers;
+    Test1: TestInterface;
   public
     { Public declarations }
   end;
@@ -27,7 +27,7 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Controller1:= TestController.create(self);
+  Test1:= TestClass.create(self);
 end;
 
 end.
