@@ -5,8 +5,7 @@ interface
 uses
   TestInterfaceUnit,
   TestClassUnit,
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs;
+  FMX.Forms, FMX.Types, FMX.Menus, System.Classes, FMX.Controls;
 
 type
   TForm1 = class(TForm)
@@ -27,7 +26,7 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Test1:= TestClass.create(self);
+  Test1 := TestClass.create(self);
 end;
 
 end.

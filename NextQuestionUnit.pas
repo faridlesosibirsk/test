@@ -3,7 +3,10 @@ unit NextQuestionUnit;
 interface
 
 uses
-  BuilserUnit, ConnectionUnit,
+  classes {TNotifyEvent} ,
+  System.Generics.Collections {TDictionary} ,
+  BuilserUnit,
+  ConnectionUnit,
   FMX.Forms;
 
 type
@@ -12,7 +15,9 @@ type
     /// <link>aggregation</link>
     Connection1: Connection;
   public
+    //procedure setNotifyEvent(NotifyEvent: TNotifyEvent);
     constructor create(AOwner: TForm);
+    procedure destroy;
   end;
 
 implementation
@@ -24,4 +29,14 @@ begin
 
 end;
 
+procedure NextQuestionClass.destroy;
+begin
+
+end;
+{
+procedure NextQuestionClass.setNotifyEvent(NotifyEvent: TNotifyEvent);
+begin
+
+end;
+}
 end.

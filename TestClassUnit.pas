@@ -43,74 +43,87 @@ implementation
 
 constructor TestClass.create(AOwner: TForm);
 begin
-  self.AOwner:=AOwner;
+  self.AOwner := AOwner;
   OpenTests_(nil);
 end;
 
 function TestClass.NextQuestion: TList<TNotifyEvent>;
 begin
-  result:=TList<TNotifyEvent>.create;
+  result := TList<TNotifyEvent>.create;
   result.add(NextQuestion_);
 end;
 
 procedure TestClass.NextQuestion_(Sender: TObject);
 begin
-  Builser1:= NextQuestionClass.Create(AOwner);
+  if assigned(Builser1) then
+    Builser1.destroy;
+  Builser1 := NextQuestionClass.create(AOwner);
 end;
 
 function TestClass.OpenTests: TList<TNotifyEvent>;
 begin
-  result:=TList<TNotifyEvent>.create;
+  result := TList<TNotifyEvent>.create;
   result.add(OpenTests_);
 end;
 
 procedure TestClass.OpenTests_(Sender: TObject);
 begin
-  Builser1:= OpenTestsClass.create(AOwner);
+  if assigned(Builser1) then
+    Builser1.destroy;
+  Builser1 := OpenTestsClass.create(AOwner, SelectTest_);
+  //Builser1.setNotifyEvent(SelectTest_);
 end;
 
 function TestClass.ResultTest: TList<TNotifyEvent>;
 begin
-  result:=TList<TNotifyEvent>.create;
+  result := TList<TNotifyEvent>.create;
   result.add(ResultTest_);
 end;
 
 procedure TestClass.ResultTest_(Sender: TObject);
 begin
-  Builser1:= ResultTestClass.create(AOwner);
+  if assigned(Builser1) then
+    Builser1.destroy;
+  Builser1 := ResultTestClass.create(AOwner);
 end;
 
 function TestClass.SelectAnswer: TList<TNotifyEvent>;
 begin
-  result:=TList<TNotifyEvent>.create;
+  result := TList<TNotifyEvent>.create;
   result.add(SelectAnswer_);
 end;
 
 procedure TestClass.SelectAnswer_(Sender: TObject);
 begin
-  Builser1:= SelectAnswerClass.create(AOwner);
+  if assigned(Builser1) then
+    Builser1.destroy;
+  Builser1 := SelectAnswerClass.create(AOwner);
 end;
 
 function TestClass.SelectTest: TList<TNotifyEvent>;
 begin
-  result:=TList<TNotifyEvent>.create;
+  result := TList<TNotifyEvent>.create;
   result.add(SelectTest_);
 end;
 
 procedure TestClass.SelectTest_(Sender: TObject);
 begin
-  Builser1:= StartTestClass.create(AOwner);
+  if assigned(Builser1) then
+    Builser1.destroy;
+  Builser1 := SelectTestClass.create(AOwner);
 end;
 
 function TestClass.StartTest: TList<TNotifyEvent>;
 begin
-  result:=TList<TNotifyEvent>.create;
+  result := TList<TNotifyEvent>.create;
   result.add(StartTest_);
 end;
 
 procedure TestClass.StartTest_(Sender: TObject);
 begin
-  Builser1:= StartTestClass.create(AOwner);
+  if assigned(Builser1) then
+    Builser1.destroy;
+  Builser1 := StartTestClass.create(AOwner);
 end;
 
 end.

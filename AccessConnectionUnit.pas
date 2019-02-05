@@ -16,6 +16,7 @@ type
     ADOConnection: TADOConnection;
   public
     function getColTable(cal, table: string): TList<String>;
+    procedure destroy;
   published
     constructor create;
   end;
@@ -33,10 +34,14 @@ begin
     Mode := cmShareDenyNone;
     LoginPrompt := False;
     ConnectionString := 'Provider=Microsoft.ACE.OLEDB.12.0;' +
-      'Data Source=Phisics.accdb;' +
-      'Persist Security Info=False';
+      'Data Source=Phisics.accdb;' + 'Persist Security Info=False';
     Connected := True;
   end;
+end;
+
+procedure AccessConnection.destroy;
+begin
+  ADOConnection.Free;
 end;
 
 function AccessConnection.getColTable(cal, table: string): TList<String>;
@@ -61,7 +66,4 @@ begin
   ADOQuery.Free;
 end;
 
-
-
 end.
-

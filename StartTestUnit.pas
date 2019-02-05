@@ -3,7 +3,10 @@ unit StartTestUnit;
 interface
 
 uses
-  BuilserUnit, ConnectionUnit,
+  classes {TNotifyEvent} ,
+  System.Generics.Collections {TDictionary} ,
+  BuilserUnit,
+  ConnectionUnit,
   FMX.Forms;
 
 type
@@ -12,7 +15,9 @@ type
     /// <link>aggregation</link>
     Connection1: Connection;
   public
+    //procedure setNotifyEvent(NotifyEvent: TNotifyEvent);
     constructor create(AOwner: TForm);
+    procedure destroy;
   end;
 
 implementation
@@ -21,7 +26,17 @@ implementation
 
 constructor StartTestClass.create(AOwner: TForm);
 begin
-
+  AOwner.Caption:='StartTestClass';
 end;
 
+procedure StartTestClass.destroy;
+begin
+
+end;
+{
+procedure StartTestClass.setNotifyEvent(NotifyEvent: TNotifyEvent);
+begin
+
+end;
+}
 end.
