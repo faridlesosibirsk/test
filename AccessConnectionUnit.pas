@@ -14,9 +14,13 @@ type
     ADOQuery: TADOQuery;
     DataSource: TDataSource;
     ADOConnection: TADOConnection;
+    caption: string;
   public
     function getColTable(cal, table: string): TList<String>;
+    procedure updateReport(user_id: integer; cal: string);
     procedure destroy;
+    procedure setCaption(caption: string);
+    function getCaption: string;
   published
     constructor create;
   end;
@@ -44,6 +48,11 @@ begin
   ADOConnection.Free;
 end;
 
+function AccessConnection.getCaption: string;
+begin
+  result := self.caption;
+end;
+
 function AccessConnection.getColTable(cal, table: string): TList<String>;
 begin
   ADOQuery := TADOQuery.create(nil);
@@ -56,14 +65,24 @@ begin
     Open;
     Active := True;
   end;
-  Result := TList<String>.create;
+  result := TList<String>.create;
   ADOQuery.First;
   While not ADOQuery.Eof do
   begin
-    Result.add(ADOQuery.FieldByName(cal).AsString);
+    result.add(ADOQuery.FieldByName(cal).AsString);
     ADOQuery.Next;
   end;
   ADOQuery.Free;
+end;
+
+procedure AccessConnection.setCaption(caption: string);
+begin
+  self.caption := caption;
+end;
+
+procedure AccessConnection.updateReport(user_id: integer; cal: string);
+begin
+
 end;
 
 end.

@@ -110,7 +110,7 @@ procedure TestClass.SelectTest_(Sender: TObject);
 begin
   if assigned(Builser1) then
     Builser1.destroy;
-  Builser1 := SelectTestClass.create(AOwner);
+  Builser1 := SelectTestClass.create(AOwner, StartTest_);
 end;
 
 function TestClass.StartTest: TList<TNotifyEvent>;

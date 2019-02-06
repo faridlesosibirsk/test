@@ -20,28 +20,32 @@ type
     /// <link>aggregation</link>
     Connection1: Connection;
     AOwner: TForm;
+    NotifyEvent: TNotifyEvent;
     MainPanels: TList<TPanel>;
     MainLabels: TList<TLabel>;
     captionMain: TList<String>;
     MechanicsPanels: TList<TPanel>;
     MechanicsLabels: TList<TLabel>;
     captionMechanics: TList<String>;
+    caption: string;
     procedure createChapter;
     procedure createMechanics;
+    procedure Notify_(Sender: TObject);
     //procedure setNotifyEvent(NotifyEvent: TNotifyEvent);
-    procedure destroy;
   public
-    constructor create(AOwner: TForm);
+    constructor create(AOwner: TForm; NotifyEvent1: TNotifyEvent);
+    procedure destroy;
   end;
 
 implementation
 
 { SelectTestClass }
 
-constructor SelectTestClass.create(AOwner: TForm);
+constructor SelectTestClass.create(AOwner: TForm; NotifyEvent1: TNotifyEvent);
 begin
   self.AOwner := AOwner;
   Connection1 := AccessConnection.create;
+  self.NotifyEvent:= NotifyEvent1;
   createChapter;
   createMechanics;
   Connection1.destroy;
@@ -84,9 +88,10 @@ procedure SelectTestClass.createMechanics;
 var
   s: string;
   i: integer;
-
+  event: TList<TNotifyEvent>;
 begin
   i := 1;
+  event:= TList<TNotifyEvent>.create;
   MechanicsPanels := TList<TPanel>.create;
   MechanicsLabels := TList<TLabel>.create;
   captionMechanics := TList<String>.create;
@@ -101,6 +106,10 @@ begin
       Last.Height := 41;
       Last.Position.Y := i * 41;
       Last.Margins.Left := 10;
+      caption:=s;
+      event.Add(Notify_);
+      Last.OnClick:=event.Items[i-1];//NotifyEvent;
+      Last.Cursor:=crHandPoint;
     end;
     with MechanicsLabels do
     begin
@@ -132,6 +141,13 @@ begin
   for p in MechanicsPanels do
     p.Parent:=nil;
 end;
+
+procedure SelectTestClass.Notify_(Sender: TObject);
+begin
+  Connection1.setCaption(caption);
+  NotifyEvent(nil);
+end;
+
 {
 procedure SelectTestClass.setNotifyEvent(NotifyEvent: TNotifyEvent);
 begin

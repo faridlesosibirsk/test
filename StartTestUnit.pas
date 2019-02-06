@@ -3,6 +3,7 @@ unit StartTestUnit;
 interface
 
 uses
+  AccessConnectionUnit,
   classes {TNotifyEvent} ,
   System.Generics.Collections {TDictionary} ,
   BuilserUnit,
@@ -26,7 +27,8 @@ implementation
 
 constructor StartTestClass.create(AOwner: TForm);
 begin
-  AOwner.Caption:='StartTestClass';
+  Connection1:= AccessConnection.create;
+  AOwner.Caption:=Connection1.getCaption;//'StartTestClass';
 end;
 
 procedure StartTestClass.destroy;
