@@ -27,7 +27,6 @@ type
     MechanicsPanels: TList<TPanel>;
     MechanicsLabels: TList<TLabel>;
     captionMechanics: TList<String>;
-    caption: string;
     procedure createChapter;
     procedure createMechanics;
     procedure Notify_(Sender: TObject);
@@ -88,10 +87,8 @@ procedure SelectTestClass.createMechanics;
 var
   s: string;
   i: integer;
-  event: TList<TNotifyEvent>;
 begin
   i := 1;
-  event:= TList<TNotifyEvent>.create;
   MechanicsPanels := TList<TPanel>.create;
   MechanicsLabels := TList<TLabel>.create;
   captionMechanics := TList<String>.create;
@@ -106,9 +103,8 @@ begin
       Last.Height := 41;
       Last.Position.Y := i * 41;
       Last.Margins.Left := 10;
-      caption:=s;
-      event.Add(Notify_);
-      Last.OnClick:=event.Items[i-1];//NotifyEvent;
+      Last.HelpKeyword:=s;
+      Last.OnClick:=Notify_;//NotifyEvent; ////////////////
       Last.Cursor:=crHandPoint;
     end;
     with MechanicsLabels do
@@ -143,8 +139,12 @@ begin
 end;
 
 procedure SelectTestClass.Notify_(Sender: TObject);
+var
+  s: string;
 begin
-  Connection1.setCaption(caption);
+  Connection1 := AccessConnection.create;
+  Connection1.updateReport(1000,TPanel(Sender).HelpKeyword);
+  Connection1.destroy;
   NotifyEvent(nil);
 end;
 

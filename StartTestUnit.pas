@@ -15,6 +15,7 @@ type
   private
     /// <link>aggregation</link>
     Connection1: Connection;
+    AOwner: TForm;
   public
     //procedure setNotifyEvent(NotifyEvent: TNotifyEvent);
     constructor create(AOwner: TForm);
@@ -27,8 +28,10 @@ implementation
 
 constructor StartTestClass.create(AOwner: TForm);
 begin
+  self.AOwner := AOwner;
   Connection1:= AccessConnection.create;
-  AOwner.Caption:=Connection1.getCaption;//'StartTestClass';
+  AOwner.Caption:=Connection1.getColTable('caption','report').Last;//'StartTestClass';
+  Connection1.destroy;
 end;
 
 procedure StartTestClass.destroy;

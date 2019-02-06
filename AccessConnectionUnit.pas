@@ -3,6 +3,7 @@ unit AccessConnectionUnit;
 interface
 
 uses
+  SysUtils,
   System.Generics.Collections {TDictionary} ,
   Data.DB,
   Data.Win.ADODB,
@@ -19,8 +20,6 @@ type
     function getColTable(cal, table: string): TList<String>;
     procedure updateReport(user_id: integer; cal: string);
     procedure destroy;
-    procedure setCaption(caption: string);
-    function getCaption: string;
   published
     constructor create;
   end;
@@ -48,11 +47,6 @@ begin
   ADOConnection.Free;
 end;
 
-function AccessConnection.getCaption: string;
-begin
-  result := self.caption;
-end;
-
 function AccessConnection.getColTable(cal, table: string): TList<String>;
 begin
   ADOQuery := TADOQuery.create(nil);
@@ -75,14 +69,22 @@ begin
   ADOQuery.Free;
 end;
 
-procedure AccessConnection.setCaption(caption: string);
-begin
-  self.caption := caption;
-end;
-
 procedure AccessConnection.updateReport(user_id: integer; cal: string);
 begin
-
+  ADOQuery := TADOQuery.create(nil);
+  with (ADOQuery) do
+  begin
+    Connection := ADOConnection;
+    Close;
+    SQL.Clear;
+    SQL.add('INSERT INTO report (user_id, caption) VALUES (1000, "'+cal+'");');
+    //SQL.add('Update report set caption="werwer" where id=1000;');
+    ExecSQL;
+    //SQL.add('SELECT * FROM report;');
+    //Open;
+    //Active := True;
+  end;
+  ADOQuery.Free;
 end;
 
 end.
