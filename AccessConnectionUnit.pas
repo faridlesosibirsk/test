@@ -77,12 +77,9 @@ begin
     Connection := ADOConnection;
     Close;
     SQL.Clear;
-    SQL.add('INSERT INTO report (user_id, caption) VALUES (1000, "'+cal+'");');
-    //SQL.add('Update report set caption="werwer" where id=1000;');
+    SQL.add('INSERT INTO report (user_id, caption, tableQuest, tableAnswer, tableTrue) VALUES (1000, "'
+      + cal + '" , "Quest1", "Answer1", "True1");');
     ExecSQL;
-    //SQL.add('SELECT * FROM report;');
-    //Open;
-    //Active := True;
   end;
   ADOQuery.Free;
 end;

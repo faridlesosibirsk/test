@@ -123,7 +123,7 @@ procedure TestClass.StartTest_(Sender: TObject);
 begin
   if assigned(Builser1) then
     Builser1.destroy;
-  Builser1 := StartTestClass.create(AOwner);
+  Builser1 := StartTestClass.create(AOwner, SelectTest_, SelectAnswer_);
 end;
 
 end.
