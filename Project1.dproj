@@ -97,6 +97,7 @@
 			<DCCReference Include="ConnectionUnit.pas"/>
 			<DCCReference Include="AccessConnectionUnit.pas"/>
 			<DCCReference Include="BuilserUnit.pas"/>
+			<DCCReference Include="ReportUnit.pas"/>
 			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txvpck"/>
@@ -124,6 +125,8 @@
 			<None Include="ModelSupport_Project1\AccessConnectionUnit\default.txvpck"/>
 			<None Include="ModelSupport_Project1\BuilserUnit\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\BuilserUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\ReportUnit\default.txaPackage"/>
+			<None Include="ModelSupport_Project1\ReportUnit\default.txvpck"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

@@ -13,7 +13,8 @@ uses
   ResultTestUnit in 'ResultTestUnit.pas',
   ConnectionUnit in 'ConnectionUnit.pas',
   AccessConnectionUnit in 'AccessConnectionUnit.pas',
-  BuilserUnit in 'BuilserUnit.pas';
+  BuilserUnit in 'BuilserUnit.pas',
+  ReportUnit in 'ReportUnit.pas';
 
 {$R *.res}
 

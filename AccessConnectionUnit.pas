@@ -18,6 +18,9 @@ type
     caption: string;
   public
     function getColTable(cal, table: string): TList<String>;
+    function getTableQuest(table, caption: string): String;
+    function getTableAnswer(table, caption: string): String;
+    function getTableTrue(table, caption: string): String;
     procedure updateReport(user_id: integer; cal: string);
     procedure destroy;
   published
@@ -45,6 +48,54 @@ end;
 procedure AccessConnection.destroy;
 begin
   ADOConnection.Free;
+end;
+
+function AccessConnection.getTableAnswer(table, caption: string): String;
+begin
+  ADOQuery := TADOQuery.create(nil);
+  with (ADOQuery) do
+  begin
+    Connection := ADOConnection;
+    Close;
+    SQL.Clear;
+    SQL.add('SELECT tableAnswer FROM ' + table + ' WHERE caption="'+caption+'";');
+    Open;
+    Active := True;
+  end;
+  result:=ADOQuery.FieldByName('tableAnswer').AsString;
+  ADOQuery.Free;
+end;
+
+function AccessConnection.getTableQuest(table, caption: string): String;
+begin
+  ADOQuery := TADOQuery.create(nil);
+  with (ADOQuery) do
+  begin
+    Connection := ADOConnection;
+    Close;
+    SQL.Clear;
+    SQL.add('SELECT tableQuest FROM ' + table + ' WHERE caption="'+caption+'";');
+    Open;
+    Active := True;
+  end;
+  result:=ADOQuery.FieldByName('tableQuest').AsString;
+  ADOQuery.Free;
+end;
+
+function AccessConnection.getTableTrue(table, caption: string): String;
+begin
+  ADOQuery := TADOQuery.create(nil);
+  with (ADOQuery) do
+  begin
+    Connection := ADOConnection;
+    Close;
+    SQL.Clear;
+    SQL.add('SELECT tableTrue FROM ' + table + ' WHERE caption="'+caption+'";');
+    Open;
+    Active := True;
+  end;
+  result:=ADOQuery.FieldByName('tableTrue').AsString;
+  ADOQuery.Free;
 end;
 
 function AccessConnection.getColTable(cal, table: string): TList<String>;

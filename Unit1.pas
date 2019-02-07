@@ -5,7 +5,8 @@ interface
 uses
   TestInterfaceUnit,
   TestClassUnit,
-  FMX.Forms, FMX.Types, FMX.Menus, System.Classes, FMX.Controls;
+  FMX.Forms, FMX.Types, FMX.Menus, System.Classes,
+  FMX.Controls, FMX.Edit;
 
 type
   TForm1 = class(TForm)

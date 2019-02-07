@@ -1,8 +1,9 @@
 unit SelectTestUnit;
-
+
 interface
 
 uses
+  ReportUnit,
   System.Generics.Collections {TDictionary} ,
   AccessConnectionUnit,
   BuilserUnit,
@@ -18,6 +19,8 @@ type
   SelectTestClass = class(TInterfacedObject, Builser)
   private
     /// <link>aggregation</link>
+    Report1: Report;
+    /// <link>aggregation</link>
     Connection1: Connection;
     AOwner: TForm;
     NotifyEvent: TNotifyEvent;
@@ -30,7 +33,6 @@ type
     procedure createChapter;
     procedure createMechanics;
     procedure Notify_(Sender: TObject);
-    //procedure setNotifyEvent(NotifyEvent: TNotifyEvent);
   public
     constructor create(AOwner: TForm; NotifyEvent1: TNotifyEvent);
     procedure destroy;
@@ -104,7 +106,7 @@ begin
       Last.Position.Y := i * 41;
       Last.Margins.Left := 10;
       Last.HelpKeyword:=s;
-      Last.OnClick:=Notify_;//NotifyEvent; ////////////////
+      Last.OnClick:=Notify_;
       Last.Cursor:=crHandPoint;
     end;
     with MechanicsLabels do
@@ -116,10 +118,6 @@ begin
     end;
     i := i + 1;
   end;
-  // MechanicsPanels.Items[0].OnClick:=toLab1Theory;
-  // MechanicsPanels.Items[0].cursor:=crHandPoint;
-  // MechanicsPanels.Items[1].OnClick:=toLab2Theory;
-  // MechanicsPanels.Items[1].cursor:=crHandPoint;
 end;
 
 procedure SelectTestClass.destroy;
@@ -143,15 +141,14 @@ var
   s: string;
 begin
   Connection1 := AccessConnection.create;
-  Connection1.updateReport(1000,TPanel(Sender).HelpKeyword);
-  Connection1.destroy;
+  Report1:= Report.NewInstance;
+  Report1.setCaptionTest(TPanel(Sender).HelpKeyword);
+  Report1.setTableQuest(Connection1.getTableQuest('Mechanics',TPanel(Sender).HelpKeyword));
+  Report1.setTableAnswer(Connection1.getTableAnswer('Mechanics',TPanel(Sender).HelpKeyword));
+  Report1.setTableTrue(Connection1.getTableTrue('Mechanics',TPanel(Sender).HelpKeyword));
   NotifyEvent(nil);
+  //Connection1.destroy;
 end;
 
-{
-procedure SelectTestClass.setNotifyEvent(NotifyEvent: TNotifyEvent);
-begin
-
-end;
-}
 end.
+

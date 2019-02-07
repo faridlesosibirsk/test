@@ -3,6 +3,8 @@ unit StartTestUnit;
 interface
 
 uses
+  SysUtils,
+  ReportUnit,
   AccessConnectionUnit,
   classes {TNotifyEvent} ,
   System.Generics.Collections {TDictionary} ,
@@ -17,6 +19,8 @@ type
   StartTestClass = class(TInterfacedObject, Builser)
   private
     /// <link>aggregation</link>
+    Report1: Report;
+    /// <link>aggregation</link>
     Connection1: Connection;
     AOwner: TForm;
     MainLabel: TLabel;
@@ -25,8 +29,8 @@ type
     backNotifyEvent: TNotifyEvent;
     selectNotifyEvent: TNotifyEvent;
   public
+    procedure selectNotifyEvent_(Sender: TObject);
     procedure createCaption;
-    //procedure setNotifyEvent(NotifyEvent: TNotifyEvent);
     constructor create(AOwner: TForm; back, select: TNotifyEvent);
     procedure destroy;
   end;
@@ -75,7 +79,7 @@ begin
       Text:='Select >';
       Position.X:=200;
       Position.Y:=100;
-      OnClick:=selectNotifyEvent;
+      OnClick:=selectNotifyEvent_;
     end;
 end;
 
@@ -85,10 +89,12 @@ begin
   backButton.Parent:=nil;
   selectButton.Parent:=nil;
 end;
-{
-procedure StartTestClass.setNotifyEvent(NotifyEvent: TNotifyEvent);
-begin
 
+procedure StartTestClass.selectNotifyEvent_(Sender: TObject);
+begin
+  Report1:= Report.NewInstance;
+  Report1.setTimeStart(Time);
+  selectNotifyEvent(nil);
 end;
-}
+
 end.
