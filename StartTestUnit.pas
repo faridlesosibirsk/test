@@ -53,7 +53,9 @@ procedure StartTestClass.createCaption;
 var
   s: string;
 begin
-  s:=Connection1.getColTable('caption','report').Last;
+  //s:=Connection1.getColTable('caption','report').Last;
+  Report1:= Report.NewInstance;
+  s:=Report1.getCaptionTest;
   MainLabel:= TLabel.create(nil);
   backButton:= TButton.create(nil);
   selectButton:= TButton.create(nil);

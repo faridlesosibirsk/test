@@ -3,6 +3,7 @@ unit ReportUnit;
 interface
 
 uses
+  System.Generics.Collections {TDictionary} ,
   DateUtils,
   SysUtils;
 
@@ -16,6 +17,7 @@ type
     tableQuest: string;
     tableAnswer: string;
     tableTrue: string;
+    Answers: TList<String>;
   strict private
     class var
     /// <link>aggregation</link>
@@ -28,14 +30,27 @@ type
     procedure setTableQuest(tableQuest: string);
     procedure setTableAnswer(tableAnswer: string);
     procedure setTableTrue(tableTrue: string);
+    procedure setAnswers(Answers: TList<String>);
     function getCurrentQuest: integer;
     function getTableQuest: string;
+    function getCaptionTest: string;
+    function getAnswers: TList<String>;
     class function NewInstance: Report;
   end;
 
 implementation
 
 { Report }
+
+function Report.getAnswers: TList<String>;
+begin
+  result:=Answers;
+end;
+
+function Report.getCaptionTest: string;
+begin
+  result:=captionTest;
+end;
 
 function Report.getCurrentQuest: integer;
 begin
@@ -59,10 +74,14 @@ begin
   self.nameUser:=nameUser;
 end;
 
+procedure Report.setAnswers(Answers: TList<String>);
+begin
+  self.Answers:=Answers;
+end;
+
 procedure Report.setCaptionTest(captionTest: string);
 begin
   self.captionTest:=captionTest;
-
 end;
 
 procedure Report.setCurrentQuest(currentQuest: integer);

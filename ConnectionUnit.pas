@@ -7,6 +7,7 @@ uses
 
 type
   Connection = interface
+    function getColTableWhere(cal, table: string; id: integer): TList<String>;
     function getColTable(cal, table: string): TList<String>;
     procedure destroy;
     procedure updateReport(user_id: integer; cal: string);

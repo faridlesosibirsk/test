@@ -17,6 +17,7 @@ type
     ADOConnection: TADOConnection;
     caption: string;
   public
+    function getColTableWhere(cal, table: string; id: integer): TList<String>;
     function getColTable(cal, table: string): TList<String>;
     function getTableQuest(table, caption: string): String;
     function getTableAnswer(table, caption: string): String;
@@ -107,6 +108,29 @@ begin
     Close;
     SQL.Clear;
     SQL.add('SELECT ' + cal + ' FROM ' + table + ';');
+    Open;
+    Active := True;
+  end;
+  result := TList<String>.create;
+  ADOQuery.First;
+  While not ADOQuery.Eof do
+  begin
+    result.add(ADOQuery.FieldByName(cal).AsString);
+    ADOQuery.Next;
+  end;
+  ADOQuery.Free;
+end;
+
+function AccessConnection.getColTableWhere(cal, table: string;
+  id: integer): TList<String>;
+begin
+  ADOQuery := TADOQuery.create(nil);
+  with (ADOQuery) do
+  begin
+    Connection := ADOConnection;
+    Close;
+    SQL.Clear;
+    SQL.add('SELECT ' + cal + ' FROM ' + table + ' WHERE '+IntToStr(id)+';');
     Open;
     Active := True;
   end;
